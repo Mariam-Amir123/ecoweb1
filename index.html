@@ -1,0 +1,373 @@
+// Function to handle the submission of forms
+function handleFormSubmission(event) {
+    event.preventDefault(); // Prevents the default form submission
+
+    let form = event.target;
+    let formData = new FormData(form);
+    let data = {};
+
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    console.log('Form Data Submitted:', data);
+
+    // Here you would typically send the data to a server
+    // For example: fetch('/submit', { method: 'POST', body: JSON.stringify(data) })
+}
+
+// Add event listeners to forms
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', handleFormSubmission);
+});
+
+// Function to dynamically add a post to a discussion thread
+function addPostToDiscussion(postContent) {
+    let postsContainer = document.querySelector('.posts');
+    let newPost = document.createElement('div');
+    newPost.className = 'post';
+    newPost.innerHTML = `
+        <h4>Anonymous User</h4>
+        <p>${postContent}</p>
+    `;
+    postsContainer.appendChild(newPost);
+}
+
+// Example usage
+// addPostToDiscussion('This is a new post added dynamically.');
+document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // هنا يمكنك إضافة الكود لإرسال البيانات إلى الخادم
+    console.log('تسجيل حساب جديد:', { username, email, password });
+
+    alert('تم تسجيل الحساب بنجاح!');
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // هنا يمكنك إضافة الكود لإرسال البيانات إلى الخادم
+    console.log('تسجيل الدخول:', { email, password });
+
+    alert('تم تسجيل الدخول بنجاح!');
+});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microplastic Awareness</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Microplastic Awareness</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Report Pollution</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="forum.html">Discussion</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="contact.html">Contact Recycling</a></li>
+                <li><a href="points.html">My Points</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Welcome to Microplastic Awareness</h2>
+        <p>Join us in the fight against microplastic pollution.</p>
+        <a class="btn-primary" href="map.html">Report a Pollution</a>
+    </section>
+    <footer>
+        <p>&copy; 2024 Microplastic Awareness. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Pollution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Report Microplastic Pollution</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Report Pollution</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="forum.html">Discussion</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="contact.html">Contact Recycling</a></li>
+                <li><a href="points.html">My Points</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Map</h2>
+        <div id="map" style="height: 500px;"></div>
+    </section>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('Microplastic pollution detected here.')
+            .openPopup();
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awareness and Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Awareness and Solutions</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Report Pollution</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="forum.html">Discussion</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="contact.html">Contact Recycling</a></li>
+                <li><a href="points.html">My Points</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Learn About Microplastics</h2>
+        <article>
+            <h3>What are Microplastics?</h3>
+            <p>Microplastics are tiny plastic particles that pose a significant environmental threat. They can come from a variety of sources including the breakdown of larger plastic items and microbeads in personal care products.</p>
+        </article>
+        <article>
+            <h3>Solutions</h3>
+            <p>To combat microplastic pollution, consider reducing plastic use, supporting policies that limit plastic production, and participating in clean-up initiatives.</p>
+        </article>
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/your_video_id" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Microplastic Awareness. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Clean-up Events</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Report Pollution</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="forum.html">Discussion</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="points.html">Points</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Upcoming Events</h2>
+        <p>Join us in our upcoming events to clean up the environment and earn points.</p>
+        <ul>
+            <li><strong>Beach Cleanup:</strong> August 30, 2024 - Help us clean up the local beaches. (Collect 20 bottles)</li>
+            <li><strong>River Cleanup:</strong> September 10, 2024 - Join us to clean the riverbanks. (Collect 30 bottles)</li>
+            <li><strong>Park Cleanup:</strong> September 20, 2024 - Contribute to keeping the parks clean. (Collect 40 bottles)</li>
+        </ul>
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="event">Select Event:</label>
+            <select id="event" name="event">
+                <option value="beach-cleanup">Beach Cleanup</option>
+                <option value="river-cleanup">River Cleanup</option>
+                <option value="park-cleanup">Park Cleanup</option>
+            </select>
+            <input type="submit" value="Register">
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Microplastic Awareness. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discussion Forum</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Discussion Forum</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Report Pollution</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="forum.html">Discussion</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="contact.html">Contact Recycling</a></li>
+                <li><a href="points.html">My Points</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Forum Discussions</h2>
+        <div class="discussion-thread">
+            <h3>General Discussion</h3>
+            <p>Share your thoughts and ideas on microplastic pollution and solutions here.</p>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <input type="submit" value="Post Message">
+            </form>
+            <div class="posts">
+                <!-- Sample posts -->
+                <div class="post">
+                    <h4>User1</h4>
+                    <p>It's crucial we all reduce plastic use to combat microplastic pollution. What are some strategies we can use?</p>
+                </div>
+                <div class="post">
+                    <h4>User2</h4>
+                    <p>Participating in local clean-up events is a great way to get involved. Check out the events section for upcoming opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2024 Microplastic Awareness. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Points</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>My Points</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Report Pollution</a></li>
+                <li><a href="awareness.html">Awareness</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="forum.html">Discussion</a></li>
+                <li><a href="rewards.html">Rewards</a></li>
+                <li><a href="contact.html">Contact Recycling</a></li>
+                <li><a href="points.html">My Points</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Your Points</h2>
+        <p>Check your accumulated points from participating in various activities and events.</p>
+        <p><strong>Total Points:</strong> 150</p>
+        <ul>
+            <li>Beach Cleanup: 50 points</li>
+            <li>River Cleanup: 60 points</li>
+            <li>Park Cleanup: 40 points</li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2024 Microplastic Awareness. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل حساب جديد</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>تسجيل حساب جديد</h2>
+        <form id="registerForm">
+            <label for="username">اسم المستخدم:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">البريد الإلكتروني:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">تسجيل</button>
+        </form>
+        <p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>تسجيل الدخول</h2>
+        <form id="loginForm">
+            <label for="email">البريد الإلكتروني:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">كلمة المرور:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">تسجيل الدخول</button>
+        </form>
+        <p>ليس لديك حساب؟ <a href="register.html">تسجيل حساب جديد</a></p>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
